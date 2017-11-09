@@ -38,6 +38,7 @@ import {
 import Actions from './Actions';
 import _drawerImage from './menu_burger.png';
 import _backButtonImage from './back_chevron.png';
+import SafeAreaView from './SafeAreaView';
 
 const styles = StyleSheet.create({
   title: {
@@ -498,11 +499,13 @@ class NavBar extends React.Component {
           selected.navigationBarStyle,
         ]}
       >
+        <SafeAreaView style={{flex: 1}} forceInset={{horizontal: 'always', bottom: 'never', top: 'never'}}>
         {navigationBarBackgroundImage ? (
           <Image source={navigationBarBackgroundImage}>
             {contents}
           </Image>
         ) : contents}
+        </SafeAreaView>
       </Animated.View>
     );
   }

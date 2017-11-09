@@ -19,6 +19,7 @@ import Reducer, { findElement } from './Reducer';
 import DefaultRenderer from './DefaultRenderer';
 import Scene from './Scene';
 import * as ActionConst from './ActionConst';
+import SafeAreaView from './SafeAreaView';
 
 const {
   RootContainer: NavigationRootContainer,
@@ -153,10 +154,14 @@ class Router extends Component {
     if (!this.state.reducer) return null;
 
     return (
-      <NavigationRootContainer
-        reducer={this.state.reducer}
-        renderNavigation={this.renderNavigation}
-      />
+      <SafeAreaView
+        style={{flex: 1, backgroundColor: '#F7F7F9'}}
+        forceInset={{horizontal: 'never', bottom: 'never', top: 'always'}}>
+        <NavigationRootContainer
+          reducer={this.state.reducer}
+          renderNavigation={this.renderNavigation}
+        />
+      </SafeAreaView>
     );
   }
 }
